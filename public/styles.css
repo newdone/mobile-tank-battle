@@ -1,0 +1,226 @@
+:root {
+  color-scheme: dark;
+  --bg: #111827;
+  --panel: rgba(17, 24, 39, 0.78);
+  --line: rgba(255, 255, 255, 0.16);
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #22c55e;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app {
+  min-height: 100dvh;
+  background:
+    linear-gradient(rgba(17, 24, 39, 0.36), rgba(17, 24, 39, 0.72)),
+    url("https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?auto=format&fit=crop&w=1600&q=80") center/cover;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.lobby {
+  width: min(920px, 100%);
+  min-height: 100dvh;
+  display: grid;
+  align-content: center;
+  gap: 22px;
+  padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+  margin: 0 auto;
+}
+
+.brand h1 {
+  margin: 6px 0 10px;
+  font-size: clamp(44px, 11vw, 88px);
+  line-height: 0.96;
+}
+
+.eyebrow,
+.summary,
+.status {
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0;
+  font-weight: 700;
+}
+
+.summary {
+  max-width: 520px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.panel {
+  width: min(420px, 100%);
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+input {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 14px;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  outline: none;
+}
+
+button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #052e16;
+  font-weight: 800;
+}
+
+.status {
+  min-height: 20px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.game {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #0f172a;
+  touch-action: none;
+  user-select: none;
+}
+
+canvas {
+  width: 100vw;
+  height: 100dvh;
+  display: block;
+  object-fit: contain;
+  background: #1f2937;
+}
+
+.hud {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  left: max(10px, env(safe-area-inset-left));
+  right: max(10px, env(safe-area-inset-right));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.hud > div {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.hud span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hud button {
+  min-height: 38px;
+  padding: 0 12px;
+  background: rgba(248, 250, 252, 0.9);
+  color: #111827;
+  pointer-events: auto;
+}
+
+.controls {
+  position: fixed;
+  inset: auto max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  pointer-events: none;
+}
+
+.stick {
+  width: 128px;
+  height: 128px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.62);
+  pointer-events: auto;
+  position: relative;
+}
+
+.knob {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(248, 250, 252, 0.88);
+  position: absolute;
+  left: 36px;
+  top: 36px;
+}
+
+.fire {
+  width: 96px;
+  height: 96px;
+  min-height: 96px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: white;
+  pointer-events: auto;
+  box-shadow: 0 10px 24px rgba(239, 68, 68, 0.35);
+}
+
+@media (orientation: portrait) {
+  canvas {
+    object-fit: cover;
+  }
+
+  .stick {
+    width: 112px;
+    height: 112px;
+  }
+
+  .knob {
+    left: 28px;
+    top: 28px;
+  }
+}
