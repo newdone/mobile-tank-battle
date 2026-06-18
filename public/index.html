@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#111827" />
+    <title>四人坦克大战</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section id="lobby" class="lobby">
+        <div class="brand">
+          <p class="eyebrow">4 人联网 · 移动端</p>
+          <h1>坦克大战</h1>
+          <p class="summary">创建房间或输入房间号，手机横屏体验更好。</p>
+        </div>
+        <form id="joinForm" class="panel">
+          <label>
+            昵称
+            <input id="nameInput" maxlength="12" autocomplete="nickname" placeholder="玩家" />
+          </label>
+          <label>
+            房间号
+            <input id="roomInput" maxlength="8" autocomplete="off" placeholder="留空自动创建" />
+          </label>
+          <button type="submit">进入战场</button>
+          <p id="serverStatus" class="status">正在连接服务器...</p>
+        </form>
+      </section>
+
+      <section id="game" class="game hidden">
+        <canvas id="battlefield" width="960" height="540" aria-label="坦克大战游戏画面"></canvas>
+        <div class="hud">
+          <div>
+            <strong id="roomLabel">房间 ----</strong>
+            <span id="playersLabel">0/4</span>
+          </div>
+          <button id="copyRoom" type="button">复制房间号</button>
+        </div>
+        <div class="controls">
+          <div id="stick" class="stick" aria-label="方向控制">
+            <div id="knob" class="knob"></div>
+          </div>
+          <button id="fire" class="fire" type="button" aria-label="开火">开火</button>
+        </div>
+      </section>
+    </main>
+    <script src="./game.js" type="module"></script>
+  </body>
+</html>
